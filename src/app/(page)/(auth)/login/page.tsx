@@ -1,10 +1,11 @@
 'use client'
-import { Button } from "@/app/components/Button"
-import { InputForm } from "@/app/components/InputForm"
-import { loginForm } from "@/app/services/auth"
-import { loginProps } from "@/app/utils/type"
-import { useRouter } from "next/navigation"
 
+
+import { Button } from "@/components/formulaire/Button"
+import { InputForm } from "@/components/formulaire/InputForm"
+import { loginForm } from "@/services/auth"
+import { loginProps } from "@/utils/type"
+import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 const login = () => {

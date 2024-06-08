@@ -35,3 +35,26 @@ export type loginProps={
     email: string,
     password: string
 }
+export type cardCryptoProps={
+    width: string,
+    image: string,
+    name: string,
+    value: number
+}
+export type cryptoTableaux={
+    data:crypto[]
+
+
+}
+export type crypto={
+    id:string
+    image: string
+    name: string
+    value:number
+    quantity:number
+
+}
+    
+
+
+    

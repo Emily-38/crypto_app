@@ -1,5 +1,5 @@
 import React from 'react'
-import { inputProps } from '../utils/type'
+import { inputProps } from '../../utils/type'
 
 export const InputForm = ({type, placeholder, name, register, errors}:inputProps) => {
   return (

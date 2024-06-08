@@ -9,7 +9,7 @@ export async function registerForm(data:registerProps ){
             'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
     }
-    const url = `${process.env.LIEN_API}auth/signup`
+    const url = `${process.env.NEXT_PUBLIC_LIEN_API}auth/signup`
     return axios.post(
         url,
         {
@@ -35,7 +35,7 @@ export async function loginForm(data:loginProps ){
             'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
     }
-    const url = `${process.env.LIEN_API}auth/signin`
+    const url = `${process.env.NEXT_PUBLIC_LIEN_API}auth/signin`
     return axios.post(
         url,
         {
@@ -44,5 +44,21 @@ export async function loginForm(data:loginProps ){
         },
         axiosConfig
     )
+      
+}
+
+export async function getAllCrypto ( jwt :any){
+    let axiosConfig = {
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            Authorization: `Bearer ${jwt}`
+        },
+        
+    }
+    const url = `${process.env.NEXT_PUBLIC_LIEN_API}crypto/all`
+    return axios.get( url, axiosConfig )
+    
       
 }

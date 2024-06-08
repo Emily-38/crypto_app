@@ -1,5 +1,5 @@
 import React from 'react'
-import { buttonProps } from '../utils/type'
+import { buttonProps } from '../../utils/type'
 
 export const Button = ({title}:buttonProps) => {
   return (

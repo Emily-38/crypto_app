@@ -1,11 +1,11 @@
 'use client'
-import { Button } from '@/app/components/Button'
 
-import { InputForm } from '@/app/components/InputForm'
-import { registerForm } from '@/app/services/auth'
-import { registerProps } from '@/app/utils/type'
+
+import { Button } from '@/components/formulaire/Button'
+import { InputForm } from '@/components/formulaire/InputForm'
+import { registerForm } from '@/services/auth'
+import { registerProps } from '@/utils/type'
 import { useRouter } from 'next/navigation'
-
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 

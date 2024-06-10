@@ -14,7 +14,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 const register = () => {
    const router=useRouter()
-    const {register,handleSubmit,formState:{errors}}=useForm()
+    const {register,handleSubmit,formState:{errors}}=useForm<registerProps>()
     const onSubmit: SubmitHandler<registerProps> = (data) => registerForm(data).then((res)=>{ 
         if(res.status=== 201){  
            router.push('/login')

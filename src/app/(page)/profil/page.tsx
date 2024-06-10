@@ -4,21 +4,29 @@ import { Header } from '@/components/Header'
 import { Navigation } from '@/components/Navigation'
 import { getAllCrypto } from '@/services/auth'
 import { crypto, cryptoTableaux } from '@/utils/type'
+import { Autocomplete, TextField } from '@mui/material'
 
 import React, { useEffect, useState } from 'react'
 
 const HomeUser = () => {
   const [crypto, setCrypto]=useState<cryptoTableaux>()
-
+  // const[ jwt , setjwt]=useState<any>()
   crypto?.data.sort((a,b) => a.value <= b.value)
-  
+ 
+
+ const jwt = window.localStorage.getItem('jwt')
+ 
 
   useEffect(()=>{
-    const jwt= window.localStorage.getItem('jwt')
-     getAllCrypto(jwt).then((res)=> setCrypto(res)
+
+    
+
+     getAllCrypto(jwt).then((res)=>{ setCrypto(res)}
+
     ),[]})
-if(!crypto){
-  return(<h1>oups sa mere il manque les cryptos</h1>)
+
+if(!crypto?.data){
+  return(<main className='bg-gray-900 flex min-h-screen flex-col text-white text-center '>oups sa mere il manque les cryptos</main>)
 }
 
   return (
@@ -38,8 +46,9 @@ if(!crypto){
     </div>
    
     <div>
-    <Navigation/>
+      <Navigation/>
 
+      
     </div>
 
 

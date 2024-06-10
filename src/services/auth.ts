@@ -1,5 +1,6 @@
-import axios from "axios"
-import { loginProps, registerProps } from "../utils/type"
+import axios, { AxiosResponse } from "axios"
+import { crypto, loginProps, registerProps } from "../utils/type"
+import { promises } from "dns"
 
 export async function registerForm(data:registerProps ){
     let axiosConfig = {
@@ -59,6 +60,22 @@ export async function getAllCrypto ( jwt :any){
     }
     const url = `${process.env.NEXT_PUBLIC_LIEN_API}crypto/all`
     return axios.get( url, axiosConfig )
+    
+      
+}
+export async function getCryptoByName( jwt:any, input:string): Promise<AxiosResponse<any, crypto[]>>{
+    let axiosConfig = {
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            Authorization: `Bearer ${jwt}`
+        },
+        
+    }
+    const url = `${process.env.NEXT_PUBLIC_LIEN_API}crypto/search/${input}`
+
+    return await axios.get( url, axiosConfig ) 
     
       
 }

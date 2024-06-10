@@ -54,7 +54,9 @@ export type crypto={
     quantity:number
 
 }
-    
+export type propsParams={
+    name:string
+}
 
 
     

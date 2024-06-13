@@ -7,22 +7,28 @@ import { loginForm } from "@/services/auth"
 import { loginProps } from "@/utils/type"
 import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { toast } from "react-toastify"
 
 const login = () => {
     const router=useRouter()
-     const {register,handleSubmit,formState:{errors}}=useForm()
-     const onSubmit: SubmitHandler<loginProps> = (data) => loginForm(data).then((res)=>{ 
-         if(res.status=== 200){  
-            console.log(res)
+     const {register,handleSubmit,setError,formState:{errors}}=useForm<loginProps>()
+     const onSubmit: SubmitHandler<loginProps> = (data) =>
+         loginForm(data).then((res)=>{ 
             window.localStorage.setItem('jwt', res.data.access_token)
+            toast.success('login successfull')
             if(res.data.user.Role.id === '7f20cb76-409e-406b-8560-a79c56f2bb25'){
             router.push('/profil')}
             else{
                 router.push('/admin')
             }
-          }
+          
          }
       )
+      .catch((e)=>{
+        toast.error(e.response.data.message)
+      })
+    
+      
    return (
      <main className=" bg-gray-900 flex min-h-screen flex-col items-center justify-between ">
      <div className="bg-gray-900 h-screen flex flex-col items-center justify-center text-center">
@@ -44,6 +50,6 @@ const login = () => {
      </div>
      </main>
    )
- }
+}
  
  export default login

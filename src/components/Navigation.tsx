@@ -31,9 +31,14 @@ export const Navigation = () => {
     <div className='bg-slate-600 flex flex-col p-4 rounded w-full' >
       <p className='text-center m-2 text-black font-bold'>Search cryptos:</p>
       <input type="text" name="search" className="py-2 w-full text-center px-4 bg-white text-black rounded-md focus:outline-none mb-4" onChange={(e) => setSearch(e.target.value)} />
-      <div className='text-left'>
-        <p>User Asset</p>
-        <p>Bank Asset</p>
+      <div className='text-left flex flex-col gap-2 cursor-pointer'>
+        <p onClick={()=>{router.push('/offer')}}>Offer</p>
+        <p onClick={()=>{router.push('/banks')}}>Bank Server</p>
+        <p onClick={()=>{router.push('/profil')}}>Profil</p>
+        <p onClick={()=>{
+          localStorage.clear()
+          router.push('/')
+        }}>Logout</p>
 
       </div>
     </div>)
@@ -51,9 +56,14 @@ export const Navigation = () => {
           }} className='bg-white rounded-md -m-1 cursor-pointer text-black p-2 border border-b-black'>{cryptoMoney.name}</p>
         )
       })}
-      <div className='text-left'>
-        <p>User Asset</p>
-        <p>Bank Asset</p>
+      <div className='text-left flex flex-col gap-2 cursor-pointer'>
+      <p onClick={()=>{router.push('/offer')}}>Offer</p>
+        <p>Bank Server</p>
+        <p>Profil</p>
+        <p onClick={()=>{
+          localStorage.clear()
+          router.push('/')
+        }}>Logout</p>
 
       </div>
     </div>

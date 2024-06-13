@@ -1,11 +1,13 @@
-import React from "react"
+
+import React, { Dispatch, SetStateAction } from "react"
 
 export type  inputProps={
     type :string
      placeholder :string
       name :string
       register :any
-      errors: any
+      errors?: any
+      option?:any
       
 }
 
@@ -28,7 +30,8 @@ export type registerProps={
     city: string,
     email: string,
     password: string,
-    promoCode: string
+    promoCode?: string
+    age?: number
     
   }
 export type loginProps={
@@ -55,8 +58,76 @@ export type crypto={
 
 }
 export type propsParams={
+    params:{
     name:string
 }
+}
 
+export type CardType={
+    id: string
+   user?:string
+    lien: string 
+    name: string
+    quantity: number
+    value:number
+    setIsReloadNeeded: Dispatch<SetStateAction<boolean>>
+}
 
-    
+export type allOfferType={
+    id: string
+    amount: number
+    User:{
+        pseudo:string
+    }
+    Crypto: offerCrypto
+}
+export type offerCrypto={
+    id: string
+    name: string
+    value: number
+    image: string
+}
+
+export type CryptoProps = {
+    created_at: string
+    id: string
+    image: string
+    name: string
+    quantity: number
+    updated_at: string
+    value: number
+  }
+  export type HeaderNavProps={
+    name:string 
+    lien:string
+  }
+  export type userProps={
+    firstName: string 
+    lastName:string 
+    pseudo: string 
+    dollarAvailables:number
+    UserHasCrypto:myCryptoProps[]
+  }
+  export type myCryptoProps={
+    Crypto:{
+            created_at: string
+            id: string
+            image: string
+            name: string
+            quantity: number
+            updated_at: string
+            value: number
+    }
+    amount:number
+
+  }
+ export type CardUserCrypto={
+    name: string
+    lien :string
+    quantity: number
+    value: number
+ }
+ export type CreateOffer={
+    id_crypto: string
+    amount: number
+ }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Slide, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className= {inter.className + "w-full min-h-screen bg-gray-900"}>{children}</body>
+      <body className= {inter.className + "w-full min-h-screen bg-gray-900"}>
+          <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Slide}
+            />
+
+{children} 
+</body>
     </html>
   );
 }

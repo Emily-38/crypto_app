@@ -14,7 +14,6 @@ export const CardCrypto = ({width,image, name, value}:cardCryptoProps) => {
         <div className='m-4'>
             <p>{value}</p>
         </div>
-
     </div>
   )
 }

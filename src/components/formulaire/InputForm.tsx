@@ -1,7 +1,8 @@
 import React from 'react'
 import { inputProps } from '../../utils/type'
 
-export const InputForm = ({type, placeholder, name, register, errors}:inputProps) => {
+export const InputForm = ({type, placeholder, name, register, errors ,option }:inputProps) => {
+  console.log("test errors",errors)
   return (
     <div className='flex w-full flex-col items-start'>
     <label className='text-white p-3 '>{name}</label>
@@ -9,11 +10,11 @@ export const InputForm = ({type, placeholder, name, register, errors}:inputProps
                 type={type}
                 name={name}
                 placeholder={placeholder}
-                {...register(`${name}`,{required:true})}
+                {...register(`${name}`,option)}
                 className="py-2 w-full px-4 bg-gray-800 text-white rounded-md focus:outline-none mb-4 "
                 />
                     {errors && (
-        <p className="text-red-600">The field {name} is required </p>
+        <p className="text-red-600">{errors.message}</p>
       )}
               
     </div>

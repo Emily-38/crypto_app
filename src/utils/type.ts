@@ -131,3 +131,12 @@ export type CryptoProps = {
     id_crypto: string
     amount: number
  }
+ export type historyProps={
+    
+        id: string,
+        id_crypto: string,
+        value: number,
+        created_at: string,
+        updated_at: string
+    
+ }

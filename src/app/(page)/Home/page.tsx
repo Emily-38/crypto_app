@@ -3,8 +3,8 @@ import { CardCrypto } from '@/components/CardCrypto'
 import { Header } from '@/components/Header'
 import { Navigation } from '@/components/Navigation'
 import { getAllCrypto } from '@/services/auth'
-import { crypto, cryptoTableaux } from '@/utils/type'
-import { Autocomplete, TextField } from '@mui/material'
+import {  cryptoTableaux } from '@/utils/type'
+
 
 import React, { useEffect, useState } from 'react'
 
@@ -19,19 +19,18 @@ const HomeUser = () => {
 
   useEffect(()=>{
      getAllCrypto(jwt).then((res)=>{ setCrypto(res)}
-
-    ),[]})
+    )},[])
 
 if(!crypto?.data){
   return(<main className='bg-gray-900 flex min-h-screen flex-col text-white text-center '>oups sa mere il manque les cryptos</main>)
 }
 
   return (
-    <main className='bg-gray-900 flex min-h-screen flex-col text-white text-center  ' >
+    <main className='bg-gray-900 flex  flex-col text-white text-center  ' >
     <Header bg='bg-[url("/ntm.jpg")] w-full h-72'/>
     <h3 className='font-bold text-2xl m-2'>Cryptos</h3> 
-    <div className='flex flex-row gap-10 '>
-    <div className='w-4/5 float-left gap-2' >
+    <div className='flex flex-col justify-center w-10/12 mx-auto'>
+   
 
     <CardCrypto width='w-full' image={crypto.data[0].image } name={crypto.data[0].name } value={crypto.data[0].value} />
     <CardCrypto width='w-4/5' image={crypto.data[1].image } name={crypto.data[1].name } value={crypto.data[1].value} />
@@ -41,15 +40,7 @@ if(!crypto?.data){
     {crypto.data[5] && <CardCrypto width='w-6/12' image={crypto.data[5].image } name={crypto.data[5].name} value={crypto.data[3].value} 
     />}
     
-    </div>
-   
-    <div>
-      <Navigation/>
-
-      
-    </div>
-
-
+  
     </div>
 
     </main>

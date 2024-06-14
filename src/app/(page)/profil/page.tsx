@@ -21,18 +21,19 @@ const profil = ( ) => {
     <div >
         <HeaderNav lien='' name=''/>
         <h1 className='font-bold text-5xl text-center text-white'>{cryptosList?.lastName} {cryptosList?.firstName}</h1>
-        <div className='text-white flex justify-between m-2'>
+        <div className='text-white flex flex-col justify-between m-2 md:flex-row'>
             <p>pseudo: {cryptosList?.pseudo} </p>
             <p>money current: {cryptosList?.dollarAvailables}</p>
         </div>
+        <div className='flex flex-wrap'>
 {cryptosList?.UserHasCrypto && cryptosList.UserHasCrypto.map((Cryptos)=>{{console.log(Cryptos)}
     return(
-        <div>
+        
             <CardUserCryptos name={Cryptos.Crypto.name} lien={Cryptos.Crypto.image} quantity={Cryptos.amount} value={Cryptos.Crypto.value}/>
-        </div>
+        
     )
 })}
-    
+    </div>
 
     </div>
   )

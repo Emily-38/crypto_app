@@ -6,7 +6,7 @@ import { ModaleBuy } from './ModaleBuy'
 
 export const Cryptocard = ({ crypto }: { crypto: CryptoProps }) => {
   return (
-    <div className='flex flex-col justify-center text-center bg-slate-500 rounded m-5 '>
+    <div className='flex flex-col justify-center text-center bg-slate-500 w-80 rounded m-5 '>
       <img
         src={crypto.image}
         alt={crypto.name}
@@ -14,7 +14,7 @@ export const Cryptocard = ({ crypto }: { crypto: CryptoProps }) => {
       />
       <p className='font-bold m-2 '>{crypto.name}</p>
 
-      <p className="text-sm">Value: {crypto.value}</p>
+      <p className="text-sm">Value: {crypto.value.toFixed(2)}</p>
       <p className="text-sm">Quantity: {crypto.quantity}</p>
       <ModaleBuy crypto={crypto} />
     </div>

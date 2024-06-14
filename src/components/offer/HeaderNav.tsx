@@ -18,8 +18,10 @@ export const HeaderNav = ({name, lien}: HeaderNavProps) => {
        </div>
 
        <div className='flex flex-row gap-5 m-4'>
-        <p>Profil</p>
-        <p onClick={()=>{
+        <p className='cursor-pointer' onClick={()=>{
+        router.push('/profil')
+      }}>Profil</p>
+        <p className='cursor-pointer' onClick={()=>{
           localStorage.clear()
           router.push('/')
         }}>Logout</p>

@@ -197,7 +197,7 @@ export async function myAsset() {
         throw new Error(e)
       })
   }
-  export async function CreateOffert({Crypto, amount} :allOfferType) {
+  export async function CreateOffert({id_crypto, amount} :CreateOffer) {
     let url = `${process.env.NEXT_PUBLIC_LIEN_API}offer/create`
   
     let axiosConfig = {
@@ -209,7 +209,7 @@ export async function myAsset() {
       },
     }
     return axios
-      .post(url,{id_crypto: Crypto, amount:amount}, axiosConfig)
+      .post(url,{id_crypto: id_crypto , amount:Number(amount)}, axiosConfig)
       .then((res) => {
         return res
       })
@@ -217,3 +217,29 @@ export async function myAsset() {
         throw new Error(e)
       })
   }
+
+  export async function getHistory(id :string) {
+    let url = `${process.env.NEXT_PUBLIC_LIEN_API}crypto/history/${id}`
+  
+    let axiosConfig = {
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    }
+    return axios
+      .get(
+        url,
+  
+        axiosConfig
+      )
+      .then((res) => {
+        return res
+      })
+      .catch((e) => {
+        throw new Error(e)
+      })
+  }
+  

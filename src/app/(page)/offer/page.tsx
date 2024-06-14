@@ -34,8 +34,8 @@ useEffect(() => {
     <div>
     <HeaderNav name='Banks' lien='/banks'/>
     <h1 className='text-white font-bold text-center text-5xl m-4'>Offers</h1>
-    <ModaleOffert crypto={''}/> 
-    <div className=' flex flex-rows flex-wrap justify-center'>
+    <ModaleOffert /> 
+    <div className=' flex flex-rows flex-wrap justify-center '>
     { offer && offer.map((crypto)=>{
         return(
             

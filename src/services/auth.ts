@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios"
-import { CreateOffer, allOfferType, crypto, loginProps, registerProps } from "../utils/type"
+import { CreateOffer, CreatePromocodeType,   crypto, loginProps, promoCodeType, registerProps } from "../utils/type"
 
 
 export async function registerForm(data:registerProps ){
@@ -243,3 +243,118 @@ export async function myAsset() {
       })
   }
   
+  export async function getallUser(){
+    let url = `${process.env.NEXT_PUBLIC_LIEN_API}user/users-assets`
+  
+    let axiosConfig = {
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    }
+    return axios
+      .get(
+        url,
+  
+        axiosConfig
+      )
+      .then((res) => {
+        return res
+      })
+      .catch((e) => {
+        throw new Error(e)
+      })
+  }
+  
+  export async function getallPromocode(){
+    let url = `${process.env.NEXT_PUBLIC_LIEN_API}promoCode/all`
+  
+    let axiosConfig = {
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    }
+    return axios
+      .get(
+        url,
+        axiosConfig
+      )
+      .then((res) => {
+        return res
+      })
+      .catch((e) => {
+        throw new Error(e)
+      })
+  }
+  
+  export async function CreatePromocode({name, value}:CreatePromocodeType){
+    let url = `${process.env.NEXT_PUBLIC_LIEN_API}promoCode/create`
+  
+    let axiosConfig = {
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    }
+    return axios
+      .post(
+        url,{name, value},axiosConfig
+      )
+      .then((res) => {
+        return res
+      })
+      .catch((e) => {
+        throw new Error(e)
+      })
+  }
+   export async function DeletePromocode(id: string){
+    let url = `${process.env.NEXT_PUBLIC_LIEN_API}promoCode/delete/${id}`
+  
+    let axiosConfig = {
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    }
+    return axios
+      .delete(
+        url,axiosConfig
+      )
+      .then((res) => {
+        return res
+      })
+      .catch((e) => {
+        throw new Error(e)
+      })
+   }
+   export async function UpdatePromocode({name, value, id}:promoCodeType){
+    let url = `${process.env.NEXT_PUBLIC_LIEN_API}promoCode/update/${id}`
+  
+    let axiosConfig = {
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    }
+    return axios
+      .patch(
+        url,{name,value},axiosConfig
+      )
+      .then((res) => {
+        return res
+      })
+      .catch((e) => {
+        throw new Error(e)
+      })
+   }

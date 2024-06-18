@@ -19,7 +19,7 @@ const login = () => {
             if(res.data.user.Role.id === '7f20cb76-409e-406b-8560-a79c56f2bb25'){
             router.push('/profil')}
             else{
-                router.push('/admin')
+                router.push('/adminRoot')
             }
           
          }

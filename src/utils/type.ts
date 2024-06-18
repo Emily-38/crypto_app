@@ -140,3 +140,19 @@ export type CryptoProps = {
         updated_at: string
     
  }
+ export type AllUserProps={
+    UserHasCrypto: myCryptoProps[]
+    dollarAvailables: number
+    firstName: string
+    lastName: string
+    pseudo: string
+}
+export type promoCodeType={
+        "id": string
+        "name": string
+        "value": number
+}
+export type CreatePromocodeType={
+    "name": string
+    "value": number
+}

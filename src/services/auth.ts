@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios"
-import { CreateOffer, CreatePromocodeType,   crypto, loginProps, promoCodeType, registerProps } from "../utils/type"
+import { CreateCryptoType, CreateOffer, CreatePromocodeType,   crypto, loginProps, promoCodeType, registerProps } from "../utils/type"
 
 
 export async function registerForm(data:registerProps ){
@@ -218,7 +218,7 @@ export async function myAsset() {
       })
   }
 
-  export async function getHistory(id :string) {
+  export async function getHistory(id :string|undefined) {
     let url = `${process.env.NEXT_PUBLIC_LIEN_API}crypto/history/${id}`
   
     let axiosConfig = {
@@ -350,6 +350,33 @@ export async function myAsset() {
     return axios
       .patch(
         url,{name,value},axiosConfig
+      )
+      .then((res) => {
+        return res
+      })
+      .catch((e) => {
+        throw new Error(e)
+      })
+   }
+   export async function CreateCrypto(data:CreateCryptoType){
+    let url = `${process.env.NEXT_PUBLIC_LIEN_API}crypto/create`
+  
+    let axiosConfig = {
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    }
+    return axios
+      .post(
+        url,{
+          name:data.name,
+          value:data.value,
+          image:data.image,
+          quantity:data.quantity
+        },axiosConfig
       )
       .then((res) => {
         return res

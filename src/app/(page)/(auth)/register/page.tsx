@@ -27,7 +27,7 @@ const schema = yup
 
 const register = () => {
    const router=useRouter()
-    const {register,handleSubmit,formState:{errors}}=useForm<registerProps>({mode:'onChange',resolver:yupResolver(schema)})
+    const {register,handleSubmit,formState:{errors}}=useForm<registerProps>({mode:'onSubmit',resolver:yupResolver(schema)})
     const onSubmit: SubmitHandler<registerProps> = (data) => registerForm(data).then((res)=>{ 
         if(res.status=== 201){  
            router.push('/login')
@@ -35,10 +35,9 @@ const register = () => {
         }
      )
   return (
-    <main className=" bg-gray-900 flex  flex-col items-center justify-between ">
-    <div className="bg-gray-900  flex flex-col items-center justify-center text-center">
+    <div className="bg-gray-900 h-full flex flex-col items-center justify-center text-center">
         <div className="text-white">
-            <h1 className="text-4xl font-bold">Register</h1> 
+            <h1 className="text-4xl font-bold m-5">Register</h1> 
         </div>
         <div className="mt-8">
             <form className="flex flex-col items-center" onSubmit={handleSubmit(onSubmit)}>
@@ -66,7 +65,7 @@ const register = () => {
 
         </div>
     </div>
-    </main>
+    
   )
 }
 

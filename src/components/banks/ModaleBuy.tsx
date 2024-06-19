@@ -38,7 +38,7 @@ export const ModaleBuy = ({ crypto }: { crypto: CryptoProps }) => {
     <div>
       <button
         onClick={handleOpen}
-       className='bg-slate-600 p-5 w-32 mx-auto shadow-md rounded-full font-bold m-5'
+       className='bg-slate-600 p-5 w-32 mx-auto shadow-md rounded-full font-bold '
       >
         Buy
       </button>
@@ -64,7 +64,7 @@ export const ModaleBuy = ({ crypto }: { crypto: CryptoProps }) => {
             </div>
 
 
-        <div className='m-5'>
+        <div className='m-5 text-center'>
           <p>Desired quantity: </p> 
           <input
             type="number"

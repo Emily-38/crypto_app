@@ -17,7 +17,7 @@ const login = () => {
             window.localStorage.setItem('jwt', res.data.access_token)
             toast.success('login successfull')
             if(res.data.user.Role.id === '7f20cb76-409e-406b-8560-a79c56f2bb25'){
-            router.push('/profil')}
+            router.push('/Home')}
             else{
                 router.push('/adminRoot')
             }

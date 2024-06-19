@@ -1,8 +1,10 @@
 'use client'
 
-import Graph from '@/components/graph/Graph'
+import { ModaleBuy } from '@/components/banks/ModaleBuy'
+
 import { getCryptoName, getHistory } from '@/services/auth'
 import { crypto, propsParams } from '@/utils/type'
+import { LineChart } from '@mui/x-charts/LineChart'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
@@ -11,18 +13,22 @@ const Crypto = ({params}:propsParams) => {
 const jwt= window.localStorage.getItem('jwt')
 const[crypto,setCrypto]=useState<crypto>() 
 const[chart, setChart]=useState()
-console.log(crypto?.id)
+
     useEffect(()=>{
-       const search= getCryptoName(jwt,params.name).then((res)=>{
+       getCryptoName(jwt,params.name).then((res)=>{
            setCrypto(res.data[0])
-           
+         
+           getHistory(crypto?.id).then((res)=>{
+            setChart(res.data)
+            console.log(res)
+           })
     }) 
         },[])
 
-      if(!crypto){
+     if(!crypto){
             return <div>erreur de chargement </div>
-        }   
-
+        }      
+ 
       
   return (
     <main className='bg-gray-900 flex min-h-screen flex-col text-white text-center  ' >
@@ -33,9 +39,19 @@ console.log(crypto?.id)
             <p>Current value: {crypto.value.toFixed(2)}</p>
         </div>
         <div>
-          <Graph/>
+        <LineChart
+      xAxis={[{ data: [1, 2, 3, 5, 8] }]}
+      series={[
+        {
+          data: [2, 5.5, 2, 8.5, 1.5],
+        },
+      ]}
+      width={300}
+      height={300}
+    />
+
         </div>
-        <button className='bg-slate-500 p-5 shadow-xl m-3 font-extrabold contenaire mx-auto rounded-full w-36'>Buy</button>
+       < ModaleBuy crypto={crypto} />
         </main>
   )
 }

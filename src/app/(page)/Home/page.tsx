@@ -27,17 +27,17 @@ if(!crypto?.data){
 
   return (
     <main className='bg-gray-900 flex  flex-col text-white text-center  ' >
-    <Header bg='bg-[url("/ntm.jpg")] w-full h-72'/>
+    <Header bg='bg-[url("/bitcoin.jpg")] w-full h-72'/>
     <h3 className='font-bold text-2xl m-2'>Cryptos</h3> 
     <div className='flex flex-col justify-center w-10/12 mx-auto'>
    
 
-    <CardCrypto width='w-full' image={crypto.data[0].image } name={crypto.data[0].name } value={crypto.data[0].value} />
-    <CardCrypto width='w-4/5' image={crypto.data[1].image } name={crypto.data[1].name } value={crypto.data[1].value} />
-    <CardCrypto width='w-9/12' image={crypto.data[2].image } name={crypto.data[2].name } value={crypto.data[2].value} />
-    <CardCrypto width='w-4/6' image={crypto.data[3].image } name={crypto.data[3].name } value={crypto.data[3].value} />
-    <CardCrypto width='w-3/5' image={crypto.data[4].image } name={crypto.data[4].name} value={crypto.data[3].value} />
-    {crypto.data[5] && <CardCrypto width='w-6/12' image={crypto.data[5].image } name={crypto.data[5].name} value={crypto.data[3].value} 
+    <CardCrypto width='md:w-full' image={crypto.data[0].image } name={crypto.data[0].name } value={crypto.data[0].value} />
+    <CardCrypto width='md:w-4/5' image={crypto.data[1].image } name={crypto.data[1].name } value={crypto.data[1].value} />
+    <CardCrypto width='md:w-9/12' image={crypto.data[2].image } name={crypto.data[2].name } value={crypto.data[2].value} />
+    <CardCrypto width='md:w-4/6' image={crypto.data[3].image } name={crypto.data[3].name } value={crypto.data[3].value} />
+    <CardCrypto width='md:w-3/5' image={crypto.data[4].image } name={crypto.data[4].name} value={crypto.data[3].value} />
+    {crypto.data[5] && <CardCrypto width='md:w-6/12' image={crypto.data[5].image } name={crypto.data[5].name} value={crypto.data[3].value} 
     />}
     
   

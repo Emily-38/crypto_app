@@ -156,3 +156,9 @@ export type CreatePromocodeType={
     "name": string
     "value": number
 }
+export type CreateCryptoType={
+    "name": string
+    "value": number
+    "quantity": number
+    "image": string
+}
